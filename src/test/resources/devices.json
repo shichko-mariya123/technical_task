@@ -1,0 +1,14 @@
+{
+  "Android_Emulator": {
+    "capabilities": {
+      "deviceName": "Android Emulator"
+    }
+  },
+  "Samsung_Galaxy": {
+    "capabilities": {
+      "deviceName": "Samsung Galaxy",
+      "udid": "device_udid",
+      "systemPort": "8082"
+    }
+  }
+}
