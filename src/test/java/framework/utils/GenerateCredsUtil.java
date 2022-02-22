@@ -45,7 +45,7 @@ public class GenerateCredsUtil {
     }
 
     public static String generateValidEmail() {
-        String allowedChars = "abcdefghijklmnopqrstuvwxyz" + "1234567890" + "_-.";
+        String allowedChars = "abcdefghijklmnopqrstuvwxyz1234567890_-.";
         String email = "";
         String temp = RandomStringUtils.random(LENGTH_OF_RANDOM_STRING, allowedChars);
         email = temp.substring(0, temp.length() - NUMBER_OF_CHARACTERS_PER_VIEW) + "@testdata.com";

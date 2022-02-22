@@ -11,6 +11,7 @@ public class WhatBringsYouToHealthilyScreen extends Screen {
     private final IButton btnSignIn = getElementFactory().getButton(By.xpath("//*[@text = 'Sign in']"),
             "Sign in button");
     private final String optionLocator = "//*[@text = '%s']";
+    private static final String EXPECTED_VALUE = "true";
 
     public WhatBringsYouToHealthilyScreen() {
         super(By.xpath("//*[@text = 'Get started']"), "What Brings You To Healthily Screen");
@@ -29,7 +30,7 @@ public class WhatBringsYouToHealthilyScreen extends Screen {
     }
 
     public boolean isGetStartedButtonEnabled() {
-         return btnGetStarted.getAttribute("enabled").equals("true");
+         return btnGetStarted.getAttribute("enabled").equals(EXPECTED_VALUE);
     }
 
     public boolean isSignInBtnDisplayed(){

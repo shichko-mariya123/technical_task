@@ -19,3 +19,14 @@ Feature: Registration
     Then Create your account screen is opened
     When I create my account with email and password
     Then Subscribe screen is opened
+    When I chose 'Monthly' type of subscription
+    And I click Subscribe button
+    Then Healthily Subscription screen is opened
+    And Payment method is added
+    When I click Subscribe button
+    Then Manage backup payment settings screen is opened
+    When I click No thanks
+    Then Home screen is opened
+    And Username present correctly
+
+

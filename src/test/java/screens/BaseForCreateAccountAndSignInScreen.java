@@ -7,29 +7,16 @@ import org.openqa.selenium.By;
 
 public abstract class BaseForCreateAccountAndSignInScreen extends Screen {
 
-    private final ITextBox txtEmail;
-    private final ITextBox txtPassword;
-    private final IButton btnContinue;
     private final String basePartOfTxtLoc = "//*[contains (@text, '%s')]//ancestor::*[@class = 'android.widget.EditText']";
+    private final ITextBox txtEmail = getElementFactory().getTextBox(By
+            .xpath(String.format(basePartOfTxtLoc, "Your email")), "Email text box");;
+    private final ITextBox txtPassword = getElementFactory().getTextBox(By
+            .xpath(String.format(basePartOfTxtLoc, "word")), "Password text box");;
+    private final IButton btnContinue = getElementFactory().getButton(By
+            .xpath("//*[contains (@text, 'go')]"), "Let's go button");;
 
     protected BaseForCreateAccountAndSignInScreen(By locator, String name) {
         super(locator, name);
-        txtEmail = getElementFactory().getTextBox(getEmailTxbLoc(), "Email text box");
-        txtPassword = getElementFactory().getTextBox(getPasswordTxbLoc(), "Password text box");
-        btnContinue = getElementFactory().getButton(getContinueBtn(), "Let's go button");
-    }
-
-
-    protected By getEmailTxbLoc(){
-        return By.xpath(String.format(basePartOfTxtLoc, "Your email"));
-    }
-
-    protected By getPasswordTxbLoc(){
-        return By.xpath(String.format(basePartOfTxtLoc, "word"));
-    }
-
-    protected By getContinueBtn(){
-        return By.xpath("//*[contains (@text, 'go')]");
     }
 
     public BaseForCreateAccountAndSignInScreen setEmail(final String email){

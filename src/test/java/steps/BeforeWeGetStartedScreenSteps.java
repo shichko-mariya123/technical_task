@@ -40,6 +40,4 @@ public class BeforeWeGetStartedScreenSteps {
         Assert.assertTrue(beforeWeGetStartedScreen.isAgreeBtnEnabled(),
                 "Agree button is not clickable");
     }
-
-
 }

@@ -10,6 +10,6 @@ public class ServiceModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        this.bind(IScreenshotProvider.class).toInstance((IScreenshotProvider) new ScreenshotProvider());
+        this.bind(IScreenshotProvider.class).toInstance(new ScreenshotProvider());
     }
 }

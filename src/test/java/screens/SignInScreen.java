@@ -7,6 +7,4 @@ public class SignInScreen extends BaseForCreateAccountAndSignInScreen {
     public SignInScreen() {
         super(By.xpath("//*[@text = 'Reset password']"), "Sign in screen");
     }
-
-
 }

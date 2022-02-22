@@ -7,35 +7,21 @@ import org.openqa.selenium.By;
 
 public class TellUsAboutYourSelfScreen extends Screen {
 
-     private final ITextBox txtName;
-     private final ITextBox txtYearOfBirth;
-     private final IButton btnExpandDropdown;
-     private final IButton btnContinue;
-     private final String lblAssignedSexAtBirthLoc = "//*[@text = '%s']";
      private final String basePartOfTxtLoc = "//*[@text ='%s']//ancestor::*[@class = 'android.widget.EditText']";
+     private final ITextBox txtName = getElementFactory().getTextBox(By
+             .xpath(String.format(basePartOfTxtLoc, "Your name")), "User name text box");;
+     private final ITextBox txtYearOfBirth = getElementFactory().getTextBox(By
+             .xpath(String.format(basePartOfTxtLoc, "Your year of birth")), "Year of birth text box");;
+     private final IButton btnExpandDropdown = getElementFactory().getButton(By
+             .xpath("//*[@content-desc = 'OPEN']"), "Expand dropdown button");;
+     private final IButton btnContinue = getElementFactory().getButton(By
+             .xpath("//*[@text = 'Continue']"), "Continue button");;
+     private final String lblAssignedSexAtBirthLoc = "//*[@text = '%s']";
+
 
     public TellUsAboutYourSelfScreen() {
-        super(By.xpath("//*[contains(@text, 'about yourself')]"), "Tell us about your self screen");
-        txtName = getElementFactory().getTextBox(getUsernameTxbLoc(), "User name text box");
-        txtYearOfBirth = getElementFactory().getTextBox(getYearOfBirthTxbLoc(), "Year of birth text box");
-        btnExpandDropdown = getElementFactory().getButton(getExpandDropdownBtnLoc(), "Expand dropdown button");
-        btnContinue = getElementFactory().getButton(getContinueBtnLoc(), "Continue button");
-    }
-
-    private By getUsernameTxbLoc(){
-        return By.xpath(String.format(basePartOfTxtLoc, "Your name"));
-    }
-
-    private By getYearOfBirthTxbLoc(){
-        return By.xpath(String.format(basePartOfTxtLoc, "Your year of birth"));
-    }
-
-    private By getExpandDropdownBtnLoc(){
-        return By.xpath("//*[@content-desc = 'OPEN']");
-    }
-
-    private By getContinueBtnLoc(){
-        return By.xpath("//*[@text = 'Continue']");
+        super(By.xpath("//*[contains(@text, 'about yourself')]"),
+                "Tell us about your self screen");
     }
 
     public TellUsAboutYourSelfScreen setUsername(final String username) {
@@ -51,7 +37,7 @@ public class TellUsAboutYourSelfScreen extends Screen {
     public TellUsAboutYourSelfScreen setAssignedSexAtBirth(final String assignedSexAtBirth){
         btnExpandDropdown.click();
         getElementFactory().getLabel(By.xpath(String.format(lblAssignedSexAtBirthLoc, assignedSexAtBirth)),
-                "Assigned se at birth label").click();
+                "Assigned sex at birth label").click();
         return this;
     }
 

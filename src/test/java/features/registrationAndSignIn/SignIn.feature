@@ -13,12 +13,12 @@ Feature: Sign in
 
   Scenario: I sign in with valid credentials
     When I sign in with data:
-      | Email    | example@test.com |
+      | Email    | example2@test.com |
       | Password | Val1dPa$$w0rd    |
-    Then Subscribe screen is opened
+    Then Home screen is opened
 
   Scenario: I try to login with invalid password
     When I sign in with data:
-      | Email    | example@test.com |
-      | Password | InVal1dPa$$w0rd    |
+      | Email    | example2@test.com |
+      | Password | InVal1dPa$$w0rd  |
     Then 'The password is invalid or the user does not have a password.' alert appears

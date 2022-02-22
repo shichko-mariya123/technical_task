@@ -1,6 +1,6 @@
 package steps;
 
-import framework.utils.ScenarioContext;
+import aquality.appium.mobile.application.AqualityServices;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,21 +8,22 @@ import io.cucumber.java.en.When;
 import org.testng.Assert;
 import screens.WhatBringsYouToHealthilyScreen;
 
-import javax.inject.Inject;
+import java.time.Duration;
 
 public class WhatBringsYouToHealthilyScreenSteps {
-    private final WhatBringsYouToHealthilyScreen whatBringsYouToHealthilyScreen;
-    private final ScenarioContext scenarioContext;
 
-    @Inject
-    public WhatBringsYouToHealthilyScreenSteps(ScenarioContext scenarioContext){
+    private static final int WAIT_FOR_CHANGES_APPEAR = 20;
+    private final WhatBringsYouToHealthilyScreen whatBringsYouToHealthilyScreen;
+
+    public WhatBringsYouToHealthilyScreenSteps(){
         whatBringsYouToHealthilyScreen = new WhatBringsYouToHealthilyScreen();
-        this.scenarioContext = scenarioContext;
     }
 
     @Given("What brings you to Healthily screen is opened")
     public void assertWhatBringsYouToHealthilyScreenIsOpened(){
-        Assert.assertTrue(whatBringsYouToHealthilyScreen.state().waitForDisplayed(),
+        Assert.assertTrue(AqualityServices.getConditionalWait()
+                .waitFor(() -> whatBringsYouToHealthilyScreen.state().isDisplayed(),
+                        Duration.ofSeconds(WAIT_FOR_CHANGES_APPEAR)),
                 "What brings you to healthily screen is not opened");
     }
 
@@ -39,12 +40,12 @@ public class WhatBringsYouToHealthilyScreenSteps {
     }
 
     @When("I choose {string} option")
-    public void chooseOption(String option) throws InterruptedException {
+    public void chooseOption(String option){
         whatBringsYouToHealthilyScreen.chooseOption(option);
     }
 
     @And("I click Get Started")
-    public void clickOnGetStarted() {
+    public void clickOnGetStarted(){
         whatBringsYouToHealthilyScreen.clickOnGetStarted();
     }
 

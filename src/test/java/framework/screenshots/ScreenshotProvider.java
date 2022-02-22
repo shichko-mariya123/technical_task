@@ -1,30 +1,19 @@
 package framework.screenshots;
 
 import aquality.appium.mobile.application.AqualityServices;
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.Screenshot;
-import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
-import javax.imageio.ImageIO;
-import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 
-public class ScreenshotProvider implements IScreenshotProvider {
+public class ScreenshotProvider implements IScreenshotProvider{
 
-    @Override
-    public byte[] takeScreenshot() {
-        Screenshot fpScreenshot = new AShot()
-                .shootingStrategy(ShootingStrategies.simple())
-                .takeScreenshot(AqualityServices.getApplication().getDriver());
-
-        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
-            ImageIO.write(fpScreenshot.getImage(), "png", baos);
-            baos.flush();
-            return baos.toByteArray();
-        } catch (IOException ioe) {
-            AqualityServices.getLogger()
-                    .debug("IO Exception during preparing screenshot of full page%nException message", ioe);
-            return new byte[] {};
-        }
+    public byte[] takeScreenshot() throws IOException {
+        File scrFile = ((TakesScreenshot) AqualityServices.getApplication().getDriver())
+                .getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("./image.png"));
+        return new byte[]{};
     }
 }

@@ -8,5 +8,4 @@ public class CreateYourAccountScreen extends BaseForCreateAccountAndSignInScreen
         super(By.xpath("//*[contains (@text, 'create your account')]"),
                 "Create your account screen");
     }
-
 }
