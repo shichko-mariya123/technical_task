@@ -14,11 +14,11 @@ Feature: Sign in
   Scenario: I sign in with valid credentials
     When I sign in with data:
       | Email    | example2@test.com |
-      | Password | Val1dPa$$w0rd    |
+      | Password | Val1dPa$$w0rd     |
     Then Home screen is opened
 
   Scenario: I try to login with invalid password
     When I sign in with data:
       | Email    | example2@test.com |
-      | Password | InVal1dPa$$w0rd  |
+      | Password | InVal1dPa$$w0rd   |
     Then 'The password is invalid or the user does not have a password.' alert appears
