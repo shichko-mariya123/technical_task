@@ -15,7 +15,7 @@ public class CustomObjectFactory implements ObjectFactory {
 
     public CustomObjectFactory() {
         this.injector = Guice.createInjector(Stage.PRODUCTION, CucumberModules.createScenarioModule(),
-                new ServiceModule(), new MobileModule(AqualityServices::getApplication));
+                 new MobileModule(AqualityServices::getApplication));
     }
 
     @Override
